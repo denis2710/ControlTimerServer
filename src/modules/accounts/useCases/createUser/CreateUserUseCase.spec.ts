@@ -3,7 +3,7 @@ import { AppError } from '../../../../shared/errors/AppError';
 import { IUserRepository } from '../../repositories/IUserRepository';
 import { UserRepositoryInMemory } from '../../repositories/in-memory/UserRepositoryInMemory';
 import { ICreateUserDto } from '../../dtos/ICreateUserDto';
-import { CreateUserUseCase } from './createUserUseCase';
+import { CreateUserUseCase } from './CreateUserUseCase';
 
 let createUserUseCase: CreateUserUseCase;
 let userRepositoryInMemory: IUserRepository;
@@ -43,28 +43,28 @@ describe('Create User', () => {
       password: 'fakepassword',
     };
 
-    expect(async () => {
+    await expect(async () => {
       await createUserUseCase.execute(user as ICreateUserDto);
     }).rejects.toBeInstanceOf(AppError);
   });
 
-  it('Should not be able to create a user with password invalid', () => {
+  it('Should not be able to create a user with password invalid', async () => {
     const user: unknown = {
       name: 'Fake user name',
       email: 'fake@example.com',
     };
 
-    expect(async () => {
+    await expect(async () => {
       await createUserUseCase.execute(user as ICreateUserDto);
     }).rejects.toBeInstanceOf(AppError);
   });
-  it('Should not be able to create a user with name invalid', () => {
+  it('Should not be able to create a user with name invalid', async () => {
     const user: unknown = {
       email: 'fake@example.com',
       password: 'fakepassword',
     };
 
-    expect(async () => {
+    await expect(async () => {
       await createUserUseCase.execute(user as ICreateUserDto);
     }).rejects.toBeInstanceOf(AppError);
   });
@@ -77,7 +77,7 @@ describe('Create User', () => {
   });
 
   it('Should not be able to create a user with email already used', async () => {
-    expect(async () => {
+    await expect(async () => {
       await createUserUseCase.execute(user);
       await createUserUseCase.execute(user);
     }).rejects.toBeInstanceOf(AppError);

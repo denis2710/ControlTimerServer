@@ -1,8 +1,8 @@
-import { IUserRepository } from 'modules/accounts/repositories/IUserRepository';
 import { inject, injectable } from 'tsyringe';
 import { v4 as uuid } from 'uuid';
 import bcrypt from 'bcrypt';
-import { AppError } from '../../../../shared/errors/AppError';
+import { IUserRepository } from '@modules/accounts/repositories/IUserRepository';
+import { AppError } from '@shared/errors/AppError';
 import { ICreateUserDto } from '../../dtos/ICreateUserDto';
 
 @injectable()
