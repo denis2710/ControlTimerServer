@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "dist",
     "target": "es2016",
+    "lib": ["esnext"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true, 
     "module": "commonjs",
