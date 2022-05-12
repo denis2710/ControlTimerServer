@@ -1,7 +1,7 @@
 import { AppError } from '@shared/errors/AppError';
 import { IAuthUserDto } from '@modules/accounts/dtos/IAuthUserDto';
 import { IUserRepository } from '@modules/accounts/repositories/IUserRepository';
-import { inject } from 'tsyringe';
+import { inject, injectable } from 'tsyringe';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -13,6 +13,7 @@ interface IResponse {
   token: string;
 }
 
+@injectable()
 class AuthUserUseCase {
   constructor(
     @inject('UserRepository')
