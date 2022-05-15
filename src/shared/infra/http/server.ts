@@ -6,7 +6,7 @@ import { AppError } from '@shared/errors/AppError';
 import { router } from '@shared/infra/http/api/routes';
 
 import '@shared/container';
-import { graphqlRouter } from './graphql/graphql';
+import { graphqlRouter } from './graphql';
 
 const app = express();
 
@@ -15,6 +15,7 @@ dotenv.config();
 app.use(express.json());
 
 app.use(router);
+
 app.use(graphqlRouter);
 
 app.use(
